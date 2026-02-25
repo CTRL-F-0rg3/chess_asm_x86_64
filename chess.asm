@@ -26,7 +26,6 @@ main:
     mov rbp, rsp
     ; wyrównanie stosu do 16 bajtów
     and rsp, -16
-
     ; display = XOpenDisplay(NULL)
     xor rdi, rdi
     call XOpenDisplay
@@ -124,11 +123,11 @@ draw_square:
     imul rcx, 80
     mov rax, r8
     imul rax, 80
-    mov r8, rax
-    mov r9, 80
+    push rax
+    push 80
     push 80
     call XFillRectangle
-    add rsp, 8
+    add rsp, 24
 
     inc r9
     jmp col_loop
